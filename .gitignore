@@ -1,0 +1,22 @@
+node_modules/
+dist/
+output/
+*.log
+.DS_Store
+
+# Keep only runtime web assets in Git. The source packs include large editor formats
+# that are not needed by the browser build.
+public/assets/vendor/sketchfab-lacrimosa/
+public/assets/vendor/sketchfab-zero/
+public/assets/vendor/poly-pizza-quaternius/
+public/assets/vendor/kenney-mini-characters/
+public/assets/vendor/**/*.zip
+public/assets/vendor/**/Blends/
+public/assets/vendor/**/FBX/
+public/assets/vendor/**/FBX format/
+public/assets/vendor/**/OBJ*/
+public/assets/vendor/**/Previews/
+public/assets/vendor/**/Textures/
+public/assets/vendor/quaternius-zombie-apocalypse-kit/Environment/
+public/assets/vendor/quaternius-zombie-apocalypse-kit/Vehicles/
+public/assets/vendor/quaternius-zombie-apocalypse-kit/Weapons/

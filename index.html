@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>&#23432;&#35703;&#29151;&#28779;</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game"></canvas>
+      <div class="hud top-left">
+        <div class="brand">&#23432;&#35703;&#29151;&#28779;</div>
+        <button id="play-button">&#37325;&#26032;&#38283;&#22987;</button>
+      </div>
+      <div class="hud top-right">
+        <div class="timer-badge"><span>&#20498;&#25976;</span><strong id="timer">60</strong><em>&#31186;</em></div>
+      </div>
+      <div class="vitals">
+        <div class="vital"><b>&#29151;&#28779;</b><div class="bar"><span id="camp-hp"></span></div></div>
+        <div class="vital"><b>&#35282;&#33394;</b><div class="bar"><span id="hero-hp"></span></div></div>
+        <div class="vital"><b>&#25802;&#20498;</b><strong id="kills">0</strong></div>
+      </div>
+      <div id="boss-warning" class="boss-warning" aria-hidden="true">
+        <div class="warning-strip">&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;</div>
+        <div class="warning-main">&#24375;&#25973;&#20358;&#35186;</div>
+        <div class="warning-strip">&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;&#12288;&#35686;&#21578;</div>
+      </div>
+      <div id="message" class="message"></div>
+      <div id="hint" class="hint">&#25302;&#26355;&#20219;&#24847;&#20301;&#32622;&#31227;&#21205;&#65292;&#38752;&#36817;&#24618;&#29289;&#26371;&#33258;&#21205;&#23556;&#25802;</div>
+      <div id="stick" class="stick">
+        <span></span>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
