@@ -292,7 +292,7 @@ const ui = {
   knob: document.querySelector('#stick span'),
 };
 
-const pointer = { active: false, id: null, x: 0, y: 0, vec: new THREE.Vector2() };
+const pointer = { active: false, id: null, x: 0, y: 0, originX: 0, originY: 0, vec: new THREE.Vector2() };
 
 window.addEventListener('resize', resize);
 window.addEventListener('keydown', (event) => state.keys.add(event.code));
@@ -846,8 +846,13 @@ function onPointerDown(event) {
   pointer.id = event.pointerId;
   pointer.x = event.clientX;
   pointer.y = event.clientY;
-  updatePointerVector();
+  pointer.originX = event.clientX;
+  pointer.originY = event.clientY;
+  pointer.vec.set(0, 0);
   canvas.setPointerCapture(event.pointerId);
+  ui.stick.style.left = `${pointer.originX}px`;
+  ui.stick.style.top = `${pointer.originY}px`;
+  ui.knob.style.transform = 'translate3d(0, 0, 0)';
   ui.stick.classList.add('active');
   ui.hint.classList.add('hidden');
 }
@@ -860,17 +865,15 @@ function onPointerMove(event) {
 }
 
 function updatePointerVector() {
-  const anchor = getScreenPosition(player.root.position);
-  ui.stick.style.left = `${anchor.x}px`;
-  ui.stick.style.top = `${anchor.y}px`;
-  const dx = pointer.x - anchor.x;
-  const dy = pointer.y - anchor.y;
+  const dx = pointer.x - pointer.originX;
+  const dy = pointer.y - pointer.originY;
   const length = Math.hypot(dx, dy);
-  const max = 96;
+  const deadzone = 16;
+  const max = 82;
   const clamped = Math.min(length, max);
   const nx = length > 0 ? dx / length : 0;
   const ny = length > 0 ? dy / length : 0;
-  const power = length < 18 ? 0 : Math.min(length / max, 1);
+  const power = length < deadzone ? 0 : Math.min((length - deadzone) / (max - deadzone), 1);
   pointer.vec.set(nx * power, ny * power);
   ui.knob.style.transform = `translate3d(${nx * clamped}px, ${ny * clamped}px, 0)`;
 }
